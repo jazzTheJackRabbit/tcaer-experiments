@@ -1,2 +1,1 @@
-Simple Youtube clone experiment to refresh React and JS knowledge.
-
+Simple youtube clone experiment in Javascript.

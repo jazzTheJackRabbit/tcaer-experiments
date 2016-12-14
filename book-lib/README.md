@@ -1,0 +1,1 @@
+Simple book library experiment in Javascript.
