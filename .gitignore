@@ -1,0 +1,3 @@
+youtube-clone/node_modules
+youtube-clone/src/constants/*.*
+*.DS_Store
