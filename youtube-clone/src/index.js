@@ -4,7 +4,7 @@ import SearchBar from './components/search_bar'
 import VideoList from './components/video_list'
 import VideoDetail from './components/video_detail'
 import YTSearch from 'youtube-api-search'
-import API_KEY from './constants/keys'
+import KEYS from './constants/keys'
 
 class App extends Component{
 	constructor(props){
@@ -18,7 +18,7 @@ class App extends Component{
 
 	youtube_search(search_term){
 		var self = this
-		YTSearch({key: API_KEY, term: search_term}, function(data){	
+		YTSearch({key: KEYS.API_KEY, term: search_term}, function(data){	
 			self.setState({
 				'videos': data,
 				'selectedVideo': data[0]
