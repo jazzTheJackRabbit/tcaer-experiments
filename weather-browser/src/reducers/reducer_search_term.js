@@ -5,9 +5,6 @@ var searchTermReducer = function(currentSubState = '', action){
 		switch(action.type){
 			case ACTION_TYPES.SEARCH_TERM_UPDATE:
 				return action.payload
-			case ACTION_TYPES.FETCH_WEATHER:
-				console.log(action.payload)
-				return ""
 		}
 	return currentSubState
 }

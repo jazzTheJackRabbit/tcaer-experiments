@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import actionCreators from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import CityWeatherList from './component_city_weather_list'
 
 class SearchBar extends Component{
 	constructor(props){
@@ -16,15 +17,32 @@ class SearchBar extends Component{
 
 	render(){
 		return(
+			<div>
 			<form
 				onSubmit = {this.handleFormSubmit}
-				>
+				className = "input-group">
 				<input 
+					placeholder="Enter City"
+					className="form-control"
 					value={this.props.searchTerm}
-					onChange={(event) => this.props.updateSearchTerm(event.target.value)}
-				/>
-				<button>Submit</button>
+					onChange={(event) => this.props.updateSearchTerm(event.target.value)} />
+				<span className="input-group-btn">
+					<button className="btn btn-secondary">Add City</button>
+				</span>
 			</form>
+
+			<table className="table table-hover">
+				<thead>
+					<tr>
+						<th>City</th>
+						<th>Temperature</th>
+						<th>Pressure</th>
+						<th>Humidity</th>
+					</tr>
+				</thead>				
+				<CityWeatherList />				
+			</table>
+			</div>
 		)
 	}
 }
@@ -37,7 +55,6 @@ var mapDispatchToProps = function(dispatch){
 }
 
 var mapStateToProps = function(state){
-	console.log(state)
 	return({
 		searchTerm: state.searchTerm
 	})
