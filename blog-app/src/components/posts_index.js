@@ -17,10 +17,9 @@ class PostsIndex extends React.Component{
 							<div className="content">
 								<div className="header">{post.title}</div>
 								<div className="meta">
-									<span className="ui italics">{post.categories}</span>
+									<span className="black">{post.categories}</span>
 								</div>
 								<div className="description">
-								<p></p>
 								</div>
 					    	</div>
 					    </div>

@@ -1,16 +1,27 @@
 import axios from 'axios'
 
 export const FETCH_POSTS = "FETCH_POSTS"
+export const CREATE_POST = "CREATE_POST"
 
 const ROOT_URL = "http://reduxblog.herokuapp.com/api"
-const API_PATH = "/posts"
-const API_KEY = "?key=123"
+const API_KEY = "?key=lorem"
 
 export function fetchPosts(){
+	const API_PATH = "/posts"
 	var requestPromise = axios.get(`${ROOT_URL}${API_PATH}${API_KEY}`)
 
 	return({
 		type: FETCH_POSTS,
+		payload: requestPromise
+	})
+}
+
+export function createPost(props){
+	const API_PATH = "/posts"
+	var requestPromise = axios.post(`${ROOT_URL}${API_PATH}${API_KEY}`, props)
+
+	return({
+		type: CREATE_POST,
 		payload: requestPromise
 	})
 }
