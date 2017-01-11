@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchPosts} from '../actions/index'
+import {Link} from 'react-router'
 
 class PostsIndex extends React.Component{
 	componentDidMount() {
@@ -12,18 +13,18 @@ class PostsIndex extends React.Component{
 		if(this.props.posts != null){
 			html = this.props.posts.data.map(post => {
 				return(
-					<div key={post.id} className="ui item">
+					<Link key={post.id} className="ui item" to={"/show/" + post.id}>
 						<div className="ui text container segment">
 							<div className="content">
 								<div className="header">{post.title}</div>
 								<div className="meta">
 									<span className="black">{post.categories}</span>
-								</div>
+								</div>								
 								<div className="description">
 								</div>
-					    	</div>
+					    	</div>					    	
 					    </div>
-					</div>
+					</Link>
 				)
 			})
 		}
@@ -47,7 +48,8 @@ var mapDispatchToProps = function(dispatch){
 
 var mapStateToProps = function(state){	
 	return({
-		posts: state.posts
+		posts: state.posts,
+		activePost: null
 	})
 }
 

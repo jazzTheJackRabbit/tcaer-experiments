@@ -4,10 +4,21 @@ import {createPost} from '../actions/index'
 import {Link} from 'react-router'
 
 class PostCreate extends React.Component{
+	static contextTypes = {
+		router: React.PropTypes.object.isRequired
+	};
+
+	onSubmit(props){
+		this.props.createPost(props)
+			.then(() => {
+				this.context.router.push("/")
+			})
+	}
+
 	render(){
 		const {fields: {title, content, categories}} = this.props
 		return(
-			<form className="ui form" onSubmit={this.props.handleSubmit(this.props.createPost)}>
+			<form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
 				<h4 className="ui header">Create a new post</h4>
 				
 				<div className="field">
